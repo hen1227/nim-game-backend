@@ -1,4 +1,4 @@
-import {BoardState} from "./game";
+import {BoardState} from "./game.js";
 
 interface Room {
     roomId: string;

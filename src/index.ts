@@ -1,10 +1,10 @@
 import express from 'express';
 import http from 'http';
 import { Server, Socket } from 'socket.io';
-import { Move } from './types/game';
+import { Move } from './types/game.js';
 import cors from 'cors';
-import { Room } from './types/network';
-import { generateRandomBoard } from './utils/game-logic';
+import { Room } from './types/network.js';
+import { generateRandomBoard } from './utils/game-logic.js';
 
 // Utility functions
 function generateRoomCode(): string {
