@@ -1,10 +1,10 @@
 import express from 'express';
 import http from 'http';
-import { Server, Socket } from 'socket.io';
-import { Move } from './types/game.js';
+import {Server, Socket} from 'socket.io';
+import {Move} from './types/game.js';
 import cors from 'cors';
-import { Room } from './types/network.js';
-import { generateRandomBoard } from './utils/game-logic.js';
+import {Room} from './types/network.js';
+import {generateRandomBoard} from './utils/game-logic.js';
 
 // Utility functions
 function generateRoomCode(): string {
@@ -35,6 +35,7 @@ const io = new Server(server, {
     },
 });
 
+// Join an existing game
 io.on('connection', (socket: Socket) => {
     console.log(`New connection: ${socket.id}`);
     socket.emit('connected', socket.id);
@@ -92,6 +93,12 @@ io.on('connection', (socket: Socket) => {
 
             if (socket.id !== currentPlayerId) {
                 socket.emit('error', 'Not your turn or you are a spectator');
+                return;
+            }
+
+            // Check if both players are present
+            if (!room.players.host || !room.players.opponent) {
+                socket.emit('error', 'Waiting for opponent to join.');
                 return;
             }
 
