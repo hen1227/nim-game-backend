@@ -229,7 +229,7 @@ io.on('connection', (socket: Socket) => {
 });
 
 // REST endpoint to get a list of available games
-app.get('/games', (req, res) => {
+app.get('/games', (_, res) => {
     const availableGames = Object.values(rooms).map((room) => ({
         roomId: room.roomId,
         players: room.players.opponent ? 2 : 1,

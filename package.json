@@ -8,6 +8,7 @@
   "keywords": [],
   "author": "Henry Abrahamsen",
   "license": "ISC",
+  "type": "module",
   "description": "",
   "dependencies": {
     "@types/express": "^5.0.0",
