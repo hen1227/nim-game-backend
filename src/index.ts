@@ -5,6 +5,7 @@ import {Move} from './types/game.js';
 import cors from 'cors';
 import {Room} from './types/network.js';
 import {generateRandomBoard} from './utils/game-logic.js';
+import 'dotenv/config';
 
 // Utility functions
 function generateRoomCode(): string {
@@ -246,7 +247,7 @@ app.get('/games', (_, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 4009;
+const PORT = process.env.PORT || 5009;
 server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
